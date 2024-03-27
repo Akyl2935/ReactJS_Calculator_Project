@@ -38,10 +38,23 @@ function reducer(state, {type, payload}){
         }
       }
 
+      return{
+        ...state, 
+        previousOperand: evaluate(state),
+        operation: payload.operation,
+        currentOperand: null
+      }
+
     case ACTIONS.CLEAR: 
     return{}
   }
 
+}
+
+function evaluate({currentOperand, previousOperand, operation}) {
+  const prev = parseFloat(previousOperand)
+  const current = parseFloat(currentOperand)
+  if(isNaN(prev) || isNaN(current)) return " "
 }
 
 function App() {
