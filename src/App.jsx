@@ -1,10 +1,11 @@
 
-import "./styles.css";
+import "./styles.css"; 
 import DigitButton from "./DigitButton";
 import {useReducer} from "react";
 import OperationButton from "./OperationButton";
  //Version is complete and working
 
+// Defining actions that can be dispatched in the reducer.
 export const ACTIONS = {
   ADD_DIGIT: 'add-digit',
   CHOOSE_OPERATION: 'choose-operation',
@@ -13,10 +14,12 @@ export const ACTIONS = {
   EVALUATE: 'evaluate'
 }
 
+// Defining actions that can be dispatched in the reducer.
 function reducer(state, {type, payload}){
+   //adding a digit to the current operand
   switch(type){
     case ACTIONS.ADD_DIGIT: 
-    if(state.overwrite){
+    if(state.overwrite){ // If overwrite mode is enabled, replace the current operand.
       return{
         ...state,
         currentOperand: payload.digit,
